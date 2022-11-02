@@ -2,6 +2,8 @@
 import { reactive } from 'vue'
 import { ref } from 'vue'
 
+const currentDate = ref(new Date())
+
 import {
   Document,
   Menu as IconMenu,
@@ -191,6 +193,28 @@ const onSubmit = () => {
       </el-container>
     </el-container>
   </div>
+  <el-row style="margin-top: 60px;">
+    <el-col
+      v-for="(o, index) in 12"
+      :key="o"
+      :span="4"
+      :offset="index > 0 ? 2 : 2"
+    >
+      <el-card :body-style="{ padding: '0px' }" style="margin-bottom: 30px;">
+        <img
+          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+          class="image"
+        />
+        <div style="padding: 14px;">
+          <span>Yummy hamburger</span>
+          <div class="bottom">
+            <time class="time">{{ currentDate }}</time>
+            <el-button text class="button">Operating</el-button>
+          </div>
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 
 <style scoped>
@@ -208,5 +232,28 @@ const onSubmit = () => {
   border-radius: 4px;
   background: var(--el-color-primary-light-9);
   color: var(--el-color-primary);
+}
+
+.time {
+  font-size: 12px;
+  color: #999;
+}
+
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 0;
+  min-height: auto;
+}
+
+.image {
+  width: 100%;
+  display: block;
 }
 </style>
